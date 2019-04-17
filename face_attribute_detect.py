@@ -38,8 +38,7 @@ def AgeAndGenderDetect(image):
                                         0 if predicted_genders[0][0] < 0.5 else 1)
     gender = 0 if predicted_genders[0][0] < 0.5 else 1
     age = int(predicted_ages[0])
-    result = age*10+gender
-    return result
+    return (gender,age)
     
 
 def preprocess_input(x, v2=True):
@@ -66,6 +65,6 @@ def EmotionDetect(image):
 
 if __name__ == '__main__':
     image = cv2.imread("1.png")
-    age_gender = AgeAndGenderDetect(image)
+    (gender,age) = AgeAndGenderDetect(image)
     emotion = EmotionDetect(image)
-    print(age_gender,emotion)
+    print(gender,age,emotion)
